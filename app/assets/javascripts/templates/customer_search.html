@@ -1,5 +1,5 @@
-<article>
-<div ng-if="customers.length > 0">
+
+<div ng-app="myApp" ng-if="customers.length > 0">
 <section class="search-results">
   <nav>
     <ul class="pager">
@@ -21,16 +21,17 @@
         </button>
       </div>
       <h4>{{ customer.email }}</h4>
+      <h4>{{ customer.last_name }}, {{ customer.first_name }}</h4>
       </li>
       </ol>
 
   <nav>
     <ul class="pager">
     <li class="previous">
-    <a href="" ng-click="previousPage()">&larr; Previous</a>
+      <a href="" ng-click="previousPage()">&larr; Previous</a>
     </li>
     <li class="next">
-    <a href="" ng-click="nextPage()">Next &rarr;</a>
+      <a href="" ng-click="nextPage()">Next &rarr;</a>
     </li>
     </ul>
   </nav>
@@ -40,4 +41,3 @@
 <div ng-if="customers.length== 0">
 No result match with criteria
 </div>
-</article>
