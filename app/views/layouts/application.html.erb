@@ -8,7 +8,7 @@
   <% controller_app = controller.controller_name.camelize(:lower) %>
   <%= javascript_include_tag 'main', "#{controller_app.underscore.dasherize}/application" %>
 </head>
-<body ng-controller="mainController">
+<body>
       <!-- HEADER AND NAVBAR -->
   <header>
       <nav class="navbar navbar-default">
@@ -24,13 +24,6 @@
       </div>
       </nav>
   </header>
-
     <%= yield %>
-    <!-- MAIN CONTENT AND INJECTED VIEWS -->
-    <div id="main">
-        {{ message }}
-        <!-- angular templating -->
-        <!-- this is where content will be injected -->
-    </div>
 </body>
 </html>

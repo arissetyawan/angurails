@@ -1,5 +1,5 @@
-
-<div ng-app="myApp" ng-if="customers.length > 0">
+<article ng-controller="CustomerSearchController">
+<div ng-if="customers.length > 0">
 <section class="search-results">
   <nav>
     <ul class="pager">
@@ -41,3 +41,4 @@
 <div ng-if="customers.length== 0">
 No result match with criteria
 </div>
+</article>
