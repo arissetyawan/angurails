@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
                                   order(customer_search_term.order).
                                   offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     else
-      @customers = []
+      @customers = Customer.all.limit(10).order("updated_at DESC")
     end
     respond_to do |format|
       format.html {}
@@ -21,6 +21,31 @@ class CustomersController < ApplicationController
 
   def show
     @customer= Customer.find(params[:id])
+    respond_to do |format|
+      format.html { render action: 'index'}
+      format.json { render json: @customer }
+    end
+  end
+
+  def edit
+    @customer= Customer.find(params[:id])
+    respond_to do |format|
+      format.html { render action: 'index'}
+      format.json { render json: @customer }
+    end
+  end
+
+  def update
+    @customer= Customer.find(params[:id])
+    respond_to do |format|
+      format.html { render action: 'index'}
+      format.json { render json: @customer }
+    end
+  end
+
+  def destroy
+    @customer= Customer.find(params[:id])
+    @customer.destroy
     respond_to do |format|
       format.html { render action: 'index'}
       format.json { render json: @customer }

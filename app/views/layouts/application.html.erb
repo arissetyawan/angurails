@@ -8,7 +8,7 @@
   <% controller_app = controller.controller_name.camelize(:lower) %>
   <%= javascript_include_tag 'main', "#{controller_app.underscore.dasherize}/application" %>
 </head>
-<body>
+<body class='container'>
       <!-- HEADER AND NAVBAR -->
   <header>
       <nav class="navbar navbar-default">
