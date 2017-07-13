@@ -1,18 +1,4 @@
 
-app.config([
-    "$routeProvider",
-    function($routeProvider) {
-      $routeProvider
-      .when("/", {
-        controller: "CustomerSearchController",
-        templateUrl: "customer_search.html"
-      })
-      .when("/customers/:id",{
-        controller: "CustomerDetailController",
-        templateUrl: "customer_detail.html"
-      });
-    }]);
-
 app.controller("CustomerSearchController", [
     "$scope","$http",'$location',
     function($scope , $http, $location, $routeParams) {
@@ -32,6 +18,9 @@ app.controller("CustomerSearchController", [
       $scope.viewDetails = function(customer) {
         $location.path("/customers/" + customer.id);
       }
+      $scope.editCustomer = function(customer) {
+        $location.path("/customers/" + customer.id + '/edit');
+      }
       
     }
     ]
@@ -43,14 +32,20 @@ app.controller("CustomerDetailController", [
       function($scope , $http , $routeParams) {
 
         var customerId = $routeParams.id;
-        $scope.customer = {};
-        $http.get(
-        "/customers/" + customerId + ".json"
-        ).then(function(response) {
-        $scope.customer = response.data;
-        },function(response) {
-          alert("There was a problem: " + response.status);
-        }
-      );
+            $scope.customer = {};
+        $http.get("/customers/" + customerId + ".json").then(function(response) {
+            $scope.customer = response.data;
+            },
+            function(response) {
+              alert("There was a problem: " + response.status);
+            }
+        );
+        $http.get("/customers/" + customerId + "/edit.json" ).then(function(response) {
+            $scope.customer = response.data;
+            },
+            function(response) {
+              alert("There was a problem: " + response.status);
+            }
+        );
       }
 ]);

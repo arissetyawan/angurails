@@ -19,6 +19,14 @@
         ng-click="viewDetails(customer)">
         View Details...
         </button>
+        <button class="btn btn-small btn-primary"
+        ng-click="editCustomer(customer)">
+        Edit
+        </button>
+        <button class="btn btn-small btn-primary"
+        ng-click="deleteCustomer(customer)">
+        Delete
+        </button>
       </div>
       <h4>{{ customer.email }}</h4>
       <h4>{{ customer.last_name }}, {{ customer.first_name }}</h4>
