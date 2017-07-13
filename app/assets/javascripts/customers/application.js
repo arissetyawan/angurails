@@ -4,7 +4,7 @@ app.controller("CustomerSearchController", [
     function($scope , $http, $location, $routeParams) {
       $scope.search = function(searchTerm) {
       $scope.searchedFor= searchTerm;
-      $http.get("/customers", { "params": { "format": "json", "keywords": searchTerm } }).then(function(response) 
+      $http.get("/customers/", { "params": { "format": "json", "keywords": searchTerm } }).then(function(response) 
           {
             $scope.customers = response.data;
           },
@@ -30,6 +30,18 @@ app.controller("CustomerSearchController", [
 app.controller("CustomerDetailController", [
       "$scope","$http","$routeParams",
       function($scope , $http , $routeParams) {
+        $scope.search = function(searchTerm) {
+        $scope.searchedFor= searchTerm;
+        $http.get("/customers", { "params": { "format": "json", "keywords": searchTerm } }).then(function(response)
+            {
+              $scope.customers = response.data;
+            },
+            function(response) 
+            {
+              alert("There was a problem: " + response.status);
+            }
+          );
+        }
 
         var customerId = $routeParams.id;
             $scope.customer = {};
